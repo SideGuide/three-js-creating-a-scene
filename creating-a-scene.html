@@ -18,9 +18,9 @@
       renderer.setSize(window.innerWidth, window.innerHeight);
       document.body.appendChild(renderer.domElement);
 
-      var geometry = new THREE.TorusKnotGeometry(5, 1, 300, 9, 2, 5);
-      var material = new THREE.MeshBasicMaterial({color: 0xd2f5fe});
-      var torusKnot = new THREE.Mesh(geometry, material);
+      var geometry = new THREE.BoxGeometry(10,10,10);
+      var material = new THREE.MeshBasicMaterial({color: 0xAA6EFF});
+      var cube = new THREE.Mesh(geometry, material);
       var wireframe = new THREE.WireframeGeometry( geometry );
 
       var line = new THREE.LineSegments( wireframe );
@@ -28,16 +28,16 @@
       line.material.opacity = 0.5;
       line.material.transparent = false;
 
-      scene.add(torusKnot, line);
+      scene.add(cube, line);
 
-      camera.position.z = 20;
+      camera.position.z = 30;
 
       function animate() {
         requestAnimationFrame(animate);
-        torusKnot.rotation.x += 0.01;
-        torusKnot.rotation.y += 0.01;
-        line.rotation.x += 0.01;
-        line.rotation.y += 0.01;
+        cube.rotation.x += 0.005;
+        cube.rotation.y += 0.005;
+        line.rotation.x += 0.005;
+        line.rotation.y += 0.005;
         renderer.render(scene, camera);
       }
       animate();
